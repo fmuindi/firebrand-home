@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firebrand Nation – Igniting a Generation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & ROOT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #C8102E; --red-dark: #9B0C23; --red-light: #FEF0F0;
+  --charcoal: #1A1A1A; --mid: #444; --gray: #767676;
+  --light: #F5F5F5; --white: #fff; --border: #E8E8E8;
+  --max: 1160px;
+  --f-serif: 'Merriweather', Georgia, serif;
+  --f-sans:  'Inter', -apple-system, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--f-sans); background: var(--white); color: var(--charcoal); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+/* ── EYEBROW ── */
+.eyebrow { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-sans); font-size: 13px; font-weight: 600; color: var(--red); letter-spacing: 0.01em; margin-bottom: 12px; }
+
+/* ── BUTTONS ── */
+.btn-red { display: inline-flex; align-items: center; gap: 6px; background: var(--red); color: #fff; font-family: var(--f-sans); font-size: 13px; font-weight: 600; padding: 10px 22px; border-radius: 999px; border: none; cursor: pointer; transition: background .2s, transform .15s; white-space: nowrap; }
+.btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-outline { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: var(--red); font-family: var(--f-sans); font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 999px; border: 1.5px solid var(--red); cursor: pointer; transition: background .2s, color .2s, transform .15s; white-space: nowrap; }
+.btn-outline:hover { background: var(--red); color: #fff; transform: translateY(-1px); }
+.btn-outline-white { display: inline-flex; align-items: center; background: transparent; color: #fff; font-family: var(--f-sans); font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.7); cursor: pointer; transition: background .2s; white-space: nowrap; }
+.btn-outline-white:hover { background: rgba(255,255,255,.15); }
+.btn-white { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--red-dark); font-family: var(--f-sans); font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 999px; border: none; cursor: pointer; transition: background .2s; }
+.btn-white:hover { background: #f5f5f5; }
+
+/* ─────────────────────────────────────────
+   TOPBAR
+───────────────────────────────────────── */
+.topbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 7px 0; font-size: 12px; color: var(--gray); }
+.topbar-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+.topbar a { color: var(--gray); font-weight: 500; display: inline-flex; align-items: center; gap: 5px; }
+.topbar a:hover { color: var(--red); }
+.topbar-left, .topbar-right { display: flex; gap: 20px; align-items: center; }
+.topbar-left svg, .topbar-right svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   HEADER
+───────────────────────────────────────── */
+header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 900; }
+.header-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: flex; align-items: center; height: 64px; gap: 28px; }
+.logo { flex-shrink: 0; line-height: 0; }
+.logo img { height: 42px; }
+.logo-text { font-family: var(--f-serif); font-size: 1.2rem; font-weight: 900; color: var(--red); }
+nav { display: flex; gap: 2px; flex: 1; }
+nav a { font-size: 13px; font-weight: 500; color: var(--charcoal); padding: 6px 11px; border-radius: 6px; transition: color .15s, background .15s; white-space: nowrap; }
+nav a:hover { color: var(--red); background: var(--red-light); }
+.header-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+.header-actions .btn-outline { font-size: 12.5px; padding: 8px 16px; }
+.header-actions .btn-red    { font-size: 12.5px; padding: 8px 16px; }
+
+/* hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; margin-left: auto; flex-shrink: 0; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: all .2s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav { display: none; position: fixed; inset: 64px 0 0; background: #fff; z-index: 899; padding: 24px 28px; flex-direction: column; gap: 0; overflow-y: auto; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid var(--border); color: var(--charcoal); }
+.mobile-nav a:hover { color: var(--red); }
+.mobile-nav .mob-ctas { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+.mobile-nav .mob-ctas a { border-bottom: none; padding: 0; justify-content: center; }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero { background: var(--white); padding: 72px 0 0; }
+.hero-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+.hero-text .eyebrow { margin-bottom: 16px; }
+.hero-h1 { font-family: var(--f-serif); font-size: clamp(2.1rem,3.5vw,3.4rem); font-weight: 900; font-style: italic; color: var(--red); line-height: 1.15; margin-bottom: 18px; }
+.hero-h1 span { font-style: normal; color: var(--charcoal); display: block; }
+.hero-sub { font-size: 15px; color: var(--mid); font-weight: 300; line-height: 1.7; max-width: 420px; margin-bottom: 36px; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.hero-icon-row { display: flex; gap: 28px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.hero-icon-link { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--mid); font-size: 11px; font-weight: 600; letter-spacing: .02em; transition: color .15s; text-align: center; min-width: 52px; }
+.hero-icon-link:hover { color: var(--red); }
+.hero-icon-link .icon-circle { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; transition: border-color .15s, background .15s; }
+.hero-icon-link:hover .icon-circle { border-color: var(--red); background: var(--red-light); }
+.hero-icon-link svg { width: 20px; height: 20px; }
+.hero-visual { display: flex; justify-content: center; align-items: center; }
+.hero-img { width: 100%; max-width: 540px; aspect-ratio: auto; object-fit: cover; border-radius: 20px; }
+
+/* ─────────────────────────────────────────
+   IMAGE GALLERY STRIP (auto-scroll)
+───────────────────────────────────────── */
+.gallery-strip {
+  margin-top: 52px;
+  padding-bottom: 60px;
+  overflow: hidden;
+  position: relative;
+}
+/* fade edges */
+.gallery-strip::before,
+.gallery-strip::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.gallery-strip::before { left: 0;  background: linear-gradient(to right, #fff 0%, transparent 100%); }
+.gallery-strip::after  { right: 0; background: linear-gradient(to left,  #fff 0%, transparent 100%); }
+
+.gallery-track {
+  display: flex;
+  gap: 12px;
+  /* width set by JS */
+  animation: galScroll 60s linear infinite;
+  will-change: transform;
+  cursor: grab;
+}
+.gallery-track:active { cursor: grabbing; }
+.gallery-track.paused { animation-play-state: paused; }
+
+@keyframes galScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.gal-item {
+  flex-shrink: 0;
+  width: 240px;
+  height: 170px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+@media (max-width: 600px) {
+  .gal-item { width: 180px; height: 130px; }
+}
+.gal-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+  display: block;
+}
+.gal-item:hover img { transform: scale(1.06); }
+.gal-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background .25s;
+  display: flex; align-items: center; justify-content: center;
+}
+.gal-item:hover .gal-overlay { background: rgba(0,0,0,.28); }
+.gal-zoom-icon {
+  opacity: 0; transform: scale(.8);
+  transition: opacity .25s, transform .25s;
+  background: rgba(255,255,255,.9);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+}
+.gal-item:hover .gal-zoom-icon { opacity: 1; transform: scale(1); }
+.gal-zoom-icon svg { width: 16px; height: 16px; color: var(--charcoal); }
+
+/* ─────────────────────────────────────────
+   LIGHTBOX
+───────────────────────────────────────── */
+#lightbox {
+  display: none; position: fixed; inset: 0;
+  z-index: 9999; background: rgba(0,0,0,.92);
+  align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+#lightbox.open { display: flex; }
+#lb-img {
+  max-width: min(90vw, 960px);
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.6);
+  animation: lbFadeIn .25s ease forwards;
+}
+@keyframes lbFadeIn { from { opacity:0; transform: scale(.96); } to { opacity:1; transform: scale(1); } }
+.lb-controls { display: flex; gap: 12px; align-items: center; }
+.lb-btn {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  color: #fff; width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s; font-size: 18px;
+}
+.lb-btn:hover { background: rgba(255,255,255,.25); }
+.lb-btn svg { width: 18px; height: 18px; pointer-events: none; }
+.lb-close {
+  position: fixed; top: 20px; right: 24px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  color: #fff; width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 22px; transition: background .2s; z-index: 10000;
+}
+.lb-close:hover { background: rgba(255,255,255,.3); }
+.lb-counter { color: rgba(255,255,255,.6); font-size: 13px; font-weight: 500; min-width: 60px; text-align: center; }
+
+/* ─────────────────────────────────────────
+   PROMO CARDS
+───────────────────────────────────────── */
+.promo-cards { background: var(--white); padding: 64px 0 72px; border-top: 1px solid var(--border); }
+.promo-grid { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+
+.promo-card { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--white); transition: box-shadow .22s, transform .2s; display: flex; flex-direction: column; }
+.promo-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.1); transform: translateY(-3px); }
+.promo-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform .4s ease; }
+.promo-card:hover .promo-card-img { transform: scale(1.04); }
+.promo-card-img-wrap { overflow: hidden; }
+.promo-card-body { padding: 18px 20px 24px; display: flex; flex-direction: column; flex: 1; }
+.promo-card-body .eyebrow { margin-bottom: 8px; }
+.promo-card h3 { font-family: var(--f-serif); font-size: 1rem; font-weight: 700; color: var(--charcoal); margin-bottom: 10px; line-height: 1.35; flex: 1; }
+.promo-card p { font-size: 13px; color: var(--mid); line-height: 1.6; margin-bottom: 16px; font-weight: 300; }
+
+/* Mega Crusade card — highlighted */
+.promo-card.crusade-card { border-color: var(--red); background: linear-gradient(160deg, #fff 60%, #FEF0F0 100%); }
+.crusade-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; width: fit-content; }
+.crusade-date { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--red); margin: 8px 0 14px; }
+.crusade-date svg { width: 13px; height: 13px; flex-shrink: 0; }
+.crusade-loc { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--mid); margin-bottom: 14px; }
+.crusade-loc svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   ALTERNATING SECTIONS
+───────────────────────────────────────── */
+.alt-section { background: var(--white); padding: 0; border-top: 1px solid var(--border); }
+.alt-row { max-width: var(--max); margin: 0 auto; padding: 72px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.alt-row + .alt-row { border-top: 1px solid var(--border); }
+.alt-row.reverse { direction: rtl; }
+.alt-row.reverse > * { direction: ltr; }
+.alt-img { border-radius: 20px; overflow: hidden; }
+.alt-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform .5s ease; }
+.alt-img:hover img { transform: scale(1.03); }
+.alt-text .eyebrow { margin-bottom: 14px; }
+.alt-text h2 { font-family: var(--f-serif); font-size: clamp(1.55rem,2.5vw,2.2rem); font-weight: 700; color: var(--charcoal); line-height: 1.25; margin-bottom: 16px; }
+.alt-text p { font-size: 14.5px; color: var(--mid); line-height: 1.75; font-weight: 300; margin-bottom: 14px; }
+.alt-text .btn-red, .alt-text .btn-outline { margin-top: 10px; }
+
+/* ─────────────────────────────────────────
+   FEATURE BANNER
+───────────────────────────────────────── */
+.feature-banner { border-top: 1px solid var(--border); overflow: hidden; }
+.feature-banner-inner { display: grid; grid-template-columns: 1fr 1fr; }
+.feature-banner-img { aspect-ratio: 16/10; object-fit: cover; width: 100%; height: 100%; display: block; }
+.feature-banner-text { background: var(--white); padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
+.feature-banner-text .eyebrow { margin-bottom: 16px; }
+.feature-banner-text h2 { font-family: var(--f-serif); font-size: clamp(1.6rem,2.5vw,2.4rem); font-weight: 900; color: var(--charcoal); line-height: 1.2; margin-bottom: 18px; }
+.feature-banner-text p { font-size: 14px; color: var(--mid); line-height: 1.75; font-weight: 300; margin-bottom: 8px; max-width: 380px; }
+.feature-banner-ctas { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+
+/* ─────────────────────────────────────────
+   BLOG
+───────────────────────────────────────── */
+.blog-section { background: var(--white); padding: 72px 0; border-top: 1px solid var(--border); }
+.blog-header { max-width: var(--max); margin: 0 auto 40px; padding: 0 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.blog-header-left h2 { font-family: var(--f-serif); font-size: clamp(1.5rem,2.2vw,2rem); font-weight: 700; color: var(--charcoal); margin-top: 4px; }
+.blog-grid { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.blog-card { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--white); transition: box-shadow .22s, transform .2s; display: flex; flex-direction: column; }
+.blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.1); transform: translateY(-3px); }
+.blog-card-img-wrap { overflow: hidden; }
+.blog-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: transform .4s ease; }
+.blog-card:hover .blog-card-img { transform: scale(1.04); }
+.blog-card-body { padding: 18px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+.blog-card-body .eyebrow { font-size: 11px; margin-bottom: 8px; }
+.blog-card h3 { font-family: var(--f-serif); font-size: 1rem; font-weight: 700; color: var(--charcoal); line-height: 1.35; margin-bottom: 10px; }
+.blog-card p { font-size: 13px; color: var(--mid); line-height: 1.6; font-weight: 300; flex: 1; margin-bottom: 16px; }
+.blog-read { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: var(--red); transition: gap .15s; }
+.blog-card:hover .blog-read { gap: 9px; }
+.blog-read svg { width: 13px; height: 13px; }
+.blog-more { max-width: var(--max); margin: 36px auto 0; padding: 0 40px; }
+
+/* ─────────────────────────────────────────
+   DONATE STRIP
+───────────────────────────────────────── */
+.donate-strip { background: #7A0C1E; padding: 64px 40px; text-align: center; }
+.donate-strip .eyebrow { color: #FFBA8A; margin-bottom: 16px; }
+.donate-strip h2 { font-family: var(--f-serif); font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+.donate-strip p { font-size: 15px; color: rgba(255,255,255,.78); max-width: 520px; margin: 0 auto 32px; font-weight: 300; line-height: 1.75; }
+.donate-strip-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ─────────────────────────────────────────
+   SIGNUP STRIP
+───────────────────────────────────────── */
+.signup-strip { background: var(--light); border-top: 1px solid var(--border); padding: 56px 40px; text-align: center; }
+.signup-strip h3 { font-family: var(--f-serif); font-size: 1.7rem; font-weight: 700; color: var(--charcoal); margin-bottom: 12px; }
+.signup-strip p { font-size: 14px; color: var(--mid); max-width: 420px; margin: 0 auto 28px; font-weight: 300; line-height: 1.65; }
+.signup-form { display: flex; gap: 8px; justify-content: center; max-width: 420px; margin: 0 auto; }
+.signup-form input { flex: 1; padding: 11px 18px; border-radius: 999px; border: 1.5px solid #ccc; font-family: var(--f-sans); font-size: 13.5px; outline: none; background: #fff; transition: border-color .15s; min-width: 0; }
+.signup-form input:focus { border-color: var(--red); }
+.signup-form input::placeholder { color: #aaa; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer { background: var(--white); border-top: 1px solid var(--border); padding: 60px 0 0; }
+.footer-top { max-width: var(--max); margin: 0 auto; padding: 0 40px 60px; display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px; }
+.footer-brand-col img { height: 48px; margin-bottom: 16px; }
+.footer-brand-col .brand-name { font-family: var(--f-serif); font-size: 1.2rem; font-weight: 900; color: var(--red); margin-bottom: 12px; }
+.footer-brand-col p { font-size: 13px; color: var(--gray); line-height: 1.65; margin-bottom: 16px; font-weight: 300; }
+.footer-brand-col address { font-size: 12.5px; color: var(--gray); font-style: normal; line-height: 1.6; margin-bottom: 20px; }
+.footer-social { display: flex; gap: 8px; flex-wrap: wrap; }
+.footer-social a { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--border); color: var(--gray); transition: background .15s, color .15s, border-color .15s; }
+.footer-social a:hover { background: var(--red); color: #fff; border-color: var(--red); }
+.footer-social svg { width: 14px; height: 14px; }
+.footer-col h4 { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--charcoal); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 13.5px; color: var(--gray); font-weight: 400; transition: color .15s; }
+.footer-col ul a:hover { color: var(--red); }
+.footer-watermark { border-top: 1px solid var(--border); padding: 24px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-watermark p { font-size: 12px; color: var(--gray); }
+.footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-legal a { font-size: 12px; color: var(--gray); transition: color .15s; }
+.footer-legal a:hover { color: var(--red); }
+
+/* ─────────────────────────────────────────
+   FOCUS ACCESSIBILITY
+───────────────────────────────────────── */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 1060px) {
+  .promo-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 960px) {
+  .wrap, .header-inner, .hero-inner, .alt-row, .footer-top,
+  .blog-grid, .blog-header, .blog-more,
+  .feature-banner-text { padding-left: 24px; padding-right: 24px; }
+  .promo-grid { padding: 0 24px; }
+  nav { display: none; }
+  .hamburger { display: flex; }
+  .header-actions .btn-outline { display: none; }
+  .header-inner { gap: 16px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero-visual { display: none; }
+  .hero-icon-row { gap: 20px; }
+  .alt-row { grid-template-columns: 1fr; gap: 32px; padding: 52px 24px; }
+  .alt-row.reverse { direction: ltr; }
+  .feature-banner-inner { grid-template-columns: 1fr; }
+  .feature-banner-img { aspect-ratio: 16/9; max-height: 280px; }
+  .feature-banner-text { padding: 48px 24px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand-col { grid-column: 1 / -1; }
+  .signup-form { max-width: 360px; }
+  .blog-grid { grid-template-columns: repeat(2,1fr); }
+  .blog-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 40px 0 0; }
+  .promo-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .donate-strip-ctas { flex-direction: column; align-items: center; }
+  .footer-top { grid-template-columns: 1fr; }
+  .topbar { display: none; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .signup-form { flex-direction: column; max-width: 300px; }
+  .signup-form .btn-red { width: 100%; justify-content: center; }
+  .gallery-strip::before, .gallery-strip::after { width: 40px; }
+  .hero-sub { max-width: 100%; }
+  .feature-banner-ctas { flex-direction: column; }
+  .feature-banner-ctas a { justify-content: center; }
+  .footer-watermark { flex-direction: column; text-align: center; }
+  .footer-legal { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── TOP UTILITY BAR ── -->
+<!-- <div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="https://www.firebrandnation.com/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find a gathering near you
+      </a>
+    </div>
+    <div class="topbar-right">
+      <a href="https://www.firebrandnation.com/get-involved">Sign up or join for updates</a>
+      <a href="https://www.firebrandnation.com/" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </a>
+    </div>
+  </div>
+</div> -->
+
+<!-- ── HEADER ── -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="https://www.firebrandnation.com/" class="logo" aria-label="Firebrand Nation Home">
+      <img src="https://elro-images.s3.us-east-2.amazonaws.com/tosm/firebrand/fn-logo-deep-red.png" alt="Firebrand Nation"
+           onerror="this.style.display='none';document.getElementById('logo-fb').style.display='block'">
+      <span id="logo-fb" class="logo-text" style="display:none">Firebrand Nation</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <!-- <a href="https://www.firebrandnation.com/">Home</a> -->
+      <a href="#about">About</a>
+      <a href="#sermons">Sermons</a>
+      <a href="#get-involved">Get Involved</a>
+      <a href="#television">Television</a>
+      <a href="#outreach">Outreach</a>
+      <a href="https://myelearning.firebrandnation.com/" target="_blank" rel="noopener">School of Ministry</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://www.firebrandnation.com/get-involved" class="btn-outline">Sign Up</a>
+      <a href="https://secure.givelively.org/donate/eternal-lifes-restoration-outreach/mega-crusade" target="_blank" rel="noopener" class="btn-red">Donate now</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <!-- <a href="https://www.firebrandnation.com/">Home</a> -->
+  <a href="#about">About</a>
+  <a href="#sermons">Sermons</a>
+  <a href="#get-involved">Get Involved</a>
+  <a href="#television">Television</a>
+  <a href="#outreach">Outreach</a>
+  <a href="https://myelearning.firebrandnation.com/" target="_blank" rel="noopener">School of Ministry</a>
+  <div class="mob-ctas">
+    <a href="https://www.firebrandnation.com/get-involved" class="btn-outline">Sign Up</a>
+    <a href="https://secure.givelively.org/donate/eternal-lifes-restoration-outreach/mega-crusade" target="_blank" rel="noopener" class="btn-red">Donate Now</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="home" class="hero" aria-label="Welcome">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        A movement, not a moment
+      </span>
+      <h1 class="hero-h1">
+        Set ablaze.<br>
+        <span>Go change the world.</span>
+      </h1>
+      <p class="hero-sub">Firebrand Nation is a faith movement igniting a generation to live with purpose, power, and presence — in every city, every nation, every sphere of life.</p>
+      <div class="hero-actions">
+        <a href="https://www.firebrandnation.com/get-involved" class="btn-red">Join the Movement</a>
+        <a href="https://www.youtube.com/firebrandnation" class="btn-outline">Watch Sermons</a>
+      </div>
+      <div class="hero-icon-row">
+        <a href="https://www.youtube.com/firebrandnation" class="hero-icon-link">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+          Watch<br>sermons
+        </a>
+        <a href="https://www.firebrandnation.com/get-involved" class="hero-icon-link">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          Join the<br>movement
+        </a>
+        <a href="https://secure.givelively.org/donate/eternal-lifes-restoration-outreach/mega-crusade" target="_blank" rel="noopener" class="hero-icon-link">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          Give /<br>partner
+        </a>
+        <a href="https://myelearning.firebrandnation.com/" target="_blank" rel="noopener" class="hero-icon-link">
+          <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          School of<br>ministry
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <img class="hero-img"
+        src="https://ik.imagekit.io/vddpcxj7e/firebrand/hero-image-1.png?tr=f-auto,q-auto,w-900"
+        alt="Firebrand Nation gathering" loading="eager">
+    </div>
+  </div>
+
+  <!-- ── AUTO-SCROLLING IMAGE GALLERY ── -->
+  <div class="gallery-strip" id="gallery-strip" aria-label="Photo gallery">
+    <div class="gallery-track" id="gallery-track"></div>
+  </div>
+</section>
+
+<!-- ═══ PROMO CARDS ═══ -->
+<section id="sermons" class="promo-cards" aria-label="Featured">
+  <div class="promo-grid">
+
+    <!-- MEGA CRUSADE CARD — first, most prominent -->
+    <article class="promo-card crusade-card">
+      <div class="promo-card-img-wrap">
+        <img class="promo-card-img"
+          src="https://ik.imagekit.io/vddpcxj7e/firebrand/crusade/bek-crusade-edited.jpeg?tr=f-auto,q-auto,w-600"
+          alt="Mega Crusade Nairobi 2026" loading="lazy">
+      </div>
+      <div class="promo-card-body">
+        <span class="crusade-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Upcoming Event
+        </span>
+        <h3>Mega Crusade — Nairobi Mukuru Kwa Njenga</h3>
+        <div class="crusade-date">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          June 11 – 14, 2026
+        </div>
+        <div class="crusade-loc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Mukuru Kwa Njenga, Nairobi
+        </div>
+        <a href="https://secure.givelively.org/donate/eternal-lifes-restoration-outreach/mega-crusade" target="_blank" rel="noopener" class="btn-red">Register &amp; Support</a>
+      </div>
+    </article>
+
+    <!-- MATHARE REVIVAL -->
+    <article class="promo-card">
+      <div class="promo-card-img-wrap">
+        <img class="promo-card-img"
+          src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/main3.jpg?tr=f-auto,q-auto,w-600"
+          alt="Mathare Revival" loading="lazy">
+      </div>
+      <div class="promo-card-body">
+        <span class="eyebrow">Featured Resource</span>
+        <h3>Mathare Revival</h3>
+        <p>Discover what God is doing in the heart of Nairobi. Download the full revival document.</p>
+        <a href="https://www.firebrandnation.com/_files/ugd/a6ba7b_064c61656f124e4e99377837327f9793.pdf" target="_blank" rel="noopener" class="btn-red">Download now</a>
+      </div>
+    </article>
+
+    <!-- THE FLAME APP -->
+    <article class="promo-card">
+      <div class="promo-card-img-wrap">
+        <img class="promo-card-img"
+          src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/main4.jpg?tr=f-auto,q-auto,w-600"
+          alt="The Flame App" loading="lazy">
+      </div>
+      <div class="promo-card-body">
+        <span class="eyebrow">Get The App</span>
+        <h3>The Flame App</h3>
+        <p>Sermons, devotionals, and community in your pocket — wherever you are.</p>
+        <a href="https://www.firebrandnation.com/post/the-flame-app" class="btn-red">Get the app</a>
+      </div>
+    </article>
+
+    <!-- SCHOOL OF MINISTRY -->
+    <article class="promo-card">
+      <div class="promo-card-img-wrap">
+        <img class="promo-card-img"
+          src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/main5.jpg?tr=f-auto,q-auto,w-600"
+          alt="School of Ministry" loading="lazy">
+      </div>
+      <div class="promo-card-body">
+        <span class="eyebrow">Enroll Now</span>
+        <h3>School of Ministry — Applications Open</h3>
+        <p>Spirit-led, practically grounded training for every sphere of life.</p>
+        <a href="https://myelearning.firebrandnation.com/" target="_blank" rel="noopener" class="btn-red">Apply today</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══ ALTERNATING SECTIONS ═══ -->
+<div class="alt-section" aria-label="About and programs">
+
+  <div id="about" class="alt-row wrap">
+    <div class="alt-text">
+      <span class="eyebrow">Who We Are</span>
+      <h2>A fire that doesn't fade</h2>
+      <p>Firebrand Nation is a Spirit-led movement born out of a conviction that God is raising up a generation that will not be silenced — a generation that carries the fire of revival into every sphere of society.</p>
+      <p>From the streets of Nairobi to nations across Africa and beyond, we preach the Gospel with power, plant seeds of transformation, and equip ordinary people for extraordinary Kingdom impact.</p>
+      <a href="https://www.firebrandnation.com/about" class="btn-red">Learn about us</a>
+    </div>
+    <div class="alt-img">
+      <img src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fnbek.webp?tr=f-auto,q-auto,w-800" alt="Firebrand Nation mission" loading="lazy">
+    </div>
+  </div>
+
+  <div id="outreach" class="alt-row wrap reverse">
+    <div class="alt-text">
+      <span class="eyebrow">Outreach</span>
+      <h2>Reaching the unreached. Restoring the broken.</h2>
+      <p>Our outreach arm goes where hope is scarce. From feeding programs and medical camps to prison ministry and youth empowerment — we believe the Gospel must be seen as much as it is heard.</p>
+      <p>Every crusade. Every community visit. Every conversation on the street. Heaven touching earth.</p>
+      <a href="https://www.firebrandnation.com/outreach" class="btn-red">Explore outreach</a>
+    </div>
+    <div class="alt-img">
+      <img src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/passion.jpg?tr=f-auto,q-auto,w-800" alt="Firebrand outreach programs" loading="lazy">
+    </div>
+  </div>
+
+  <div id="television" class="alt-row wrap">
+    <div class="alt-text">
+      <span class="eyebrow">Television &amp; Media</span>
+      <h2>Life-changing television, reaching a continent</h2>
+      <p>Firebrand on TV broadcasts Spirit-filled programming to hundreds of thousands across East Africa and beyond. Faith-building, family-friendly, and free — wherever you are.</p>
+      <a href="https://www.firebrandnation.com/television" class="btn-red">Watch on TV</a>
+    </div>
+    <div class="alt-img">
+      <img src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn1.webp?tr=f-auto,q-auto,w-800" alt="Firebrand television broadcast" loading="lazy">
+    </div>
+  </div>
+
+  <div id="get-involved" class="alt-row wrap reverse">
+    <div class="alt-text">
+      <span class="eyebrow">Get Involved</span>
+      <h2>Life is richer when you're in the mission</h2>
+      <p>Whether you serve on teams, join a prayer network, attend events, or simply show up — there's a place for you in this movement. We don't need spectators; we need soldiers of faith.</p>
+      <a href="https://www.firebrandnation.com/get-involved" class="btn-red">Find your place</a>
+    </div>
+    <div class="alt-img">
+      <img src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn2.webp?tr=f-auto,q-auto,w-800" alt="Get involved with Firebrand" loading="lazy">
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FEATURE BANNER — School of Ministry ═══ -->
+<div id="school" class="feature-banner" aria-label="School of Ministry">
+  <div class="feature-banner-inner">
+    <img class="feature-banner-img"
+      src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/join-session.jpg?tr=f-auto,q-auto,w-1000"
+      alt="School of Ministry students" loading="lazy">
+    <div class="feature-banner-text">
+      <span class="eyebrow">School of Ministry</span>
+      <h2>Train. Equip. Go change the world.</h2>
+      <p>The Firebrand School of Ministry offers practical, Spirit-led courses for every believer ready to step into frontline Kingdom work — online and in-person.</p>
+      <p>Biblical foundations. Leadership development. Real-world application.</p>
+      <div class="feature-banner-ctas">
+        <a href="https://myelearning.firebrandnation.com/" target="_blank" rel="noopener" class="btn-red">Visit School of Ministry</a>
+        <a href="https://myelearning.firebrandnation.com/" target="_blank" rel="noopener" class="btn-outline">Learn more</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BLOG ═══ -->
+<section id="blog" class="blog-section" aria-label="Blog and resources">
+  <div class="blog-header">
+    <div class="blog-header-left">
+      <span class="eyebrow">From Our Desk</span>
+      <h2>Words That Build Faith</h2>
+    </div>
+    <a href="https://www.firebrandnation.com/blog" class="btn-outline">More Blogs</a>
+  </div>
+  <div class="blog-grid">
+
+    <a href="https://www.firebrandnation.com/post/8-prophecies-for-kenyan-youth-by-dr-steve-foss" class="blog-card">
+      <div class="blog-card-img-wrap"><img class="blog-card-img" src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn3.jpg?tr=f-auto,q-auto,w-600" alt="8 Prophecies for Kenyan Youth" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="eyebrow">Prophecy</span>
+        <h3>8 Prophecies for Kenyan Youth by Dr Steve Foss</h3>
+        <p>Powerful prophetic words over a generation. What God is saying about Kenya's youth and their role in global revival.</p>
+        <span class="blog-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.firebrandnation.com/post/the-wisdom-of-soul-winning" class="blog-card">
+      <div class="blog-card-img-wrap"><img class="blog-card-img" src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn4.jpg?tr=f-auto,q-auto,w-600" alt="The Wisdom of Soul Winning" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="eyebrow">Evangelism</span>
+        <h3>The Wisdom of Soul Winning</h3>
+        <p>Soul winning is not a programme — it is a lifestyle. Discover the wisdom that sustains a life of fruitful evangelism.</p>
+        <span class="blog-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.firebrandnation.com/post/wisdom-in-movement" class="blog-card">
+      <div class="blog-card-img-wrap"><img class="blog-card-img" src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn5.jpg?tr=f-auto,q-auto,w-600" alt="Wisdom in Movement" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="eyebrow">Leadership</span>
+        <h3>Wisdom in Movement</h3>
+        <p>What keeps a movement alive, healthy, and advancing? A candid look at the wisdom required to steward revival well.</p>
+        <span class="blog-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.firebrandnation.com/post/radical-faith" class="blog-card">
+      <div class="blog-card-img-wrap"><img class="blog-card-img" src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn6.jpg?tr=f-auto,q-auto,w-600" alt="Radical Faith" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="eyebrow">Faith</span>
+        <h3>Radical Faith</h3>
+        <p>Average faith produces average results. God is calling his people to a faith that moves mountains, crosses oceans, and changes nations.</p>
+        <span class="blog-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.firebrandnation.com/post/this-is-the-story-of-the-firebrands" class="blog-card">
+      <div class="blog-card-img-wrap"><img class="blog-card-img" src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn7.jpg?tr=f-auto,q-auto,w-600" alt="This is the story of the Firebrands" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="eyebrow">Our Story</span>
+        <h3>This is the story of the Firebrands.</h3>
+        <p>Every great movement begins with a story. Here is ours — raw, real, and full of the grace of God from the very beginning.</p>
+        <span class="blog-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <a href="https://www.firebrandnation.com/post/the-flame-app" class="blog-card">
+      <div class="blog-card-img-wrap"><img class="blog-card-img" src="https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn8.jpg?tr=f-auto,q-auto,w-600" alt="The Flame App" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="eyebrow">Technology</span>
+        <h3>The Flame App</h3>
+        <p>We built an app to put the fire in your pocket. Here's what it does, why it matters, and how to get it right now.</p>
+        <span class="blog-read">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+  </div>
+  <div class="blog-more">
+    <a href="https://www.firebrandnation.com/blog" class="btn-outline">More Blogs</a>
+  </div>
+</section>
+
+<!-- ═══ DONATE STRIP ═══ -->
+<section class="donate-strip" aria-label="Partner with Firebrand Nation">
+  <span class="eyebrow">Fuel the fire</span>
+  <h2>Your gift changes everything</h2>
+  <p>Every crusade, outreach trip, television broadcast, and scholarship begins with a partner who said yes. When you give to Firebrand Nation, you send yourself into nations.</p>
+  <div class="donate-strip-ctas">
+    <a href="https://secure.givelively.org/donate/eternal-lifes-restoration-outreach/mega-crusade" target="_blank" rel="noopener" class="btn-white">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Donate now
+    </a>
+    <a href="https://www.firebrandnation.com/get-involved" class="btn-outline-white">Learn how giving helps</a>
+  </div>
+</section>
+
+<!-- ═══ SIGNUP STRIP ═══ -->
+<!-- <div class="signup-strip" aria-label="Stay connected">
+  <h3>Don't walk this journey alone</h3>
+  <p>Get sermon notes, event updates, and movement news — straight to you.</p>
+  <form class="signup-form" onsubmit="doSignup(event)" novalidate>
+    <label for="em" style="position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden">Email address</label>
+    <input type="email" id="em" placeholder="Enter your email" required autocomplete="email">
+    <button type="submit" class="btn-red">Sign up</button>
+  </form>
+</div> -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer aria-label="Site footer">
+  <div class="footer-top">
+    <div class="footer-brand-col">
+      <img src="https://elro-images.s3.us-east-2.amazonaws.com/tosm/firebrand/fn-logo-deep-red.png" alt="Firebrand Nation"
+           onerror="this.style.display='none';document.getElementById('ft-brand').style.display='block'">
+      <div id="ft-brand" class="brand-name" style="display:none">Firebrand Nation</div>
+      <p>Igniting a generation with the fire of God's Word to transform cities, nations, and every sphere of human life.</p>
+      <address>Haille Selassie Avenue<br>Nairobi CBD, Kenya</address>
+      <div class="footer-social">
+        <a href="https://facebook.com/firebrandnation" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://youtube.com/firebrandnation" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </a>
+        <a href="https://instagram.com/firebrandnation" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://twitter.com/firebrandnation" target="_blank" rel="noopener" aria-label="Twitter / X">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Who We Are</h4>
+      <ul>
+        <li><a href="https://www.firebrandnation.com/">Home</a></li>
+        <li><a href="https://www.firebrandnation.com/about">About</a></li>
+        <li><a href="https://www.firebrandnation.com/get-involved">Get Involved</a></li>
+        <li><a href="https://www.firebrandnation.com/outreach">Outreach</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Media</h4>
+      <ul>
+        <li><a href="https://www.firebrandnation.com/sermons">Sermons</a></li>
+        <li><a href="https://www.firebrandnation.com/television">Television</a></li>
+        <li><a href="https://www.firebrandnation.com/blog">Blog</a></li>
+        <li><a href="https://www.firebrandnation.com/post/the-flame-app">The Flame App</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Training &amp; Support</h4>
+      <ul>
+        <li><a href="https://myelearning.firebrandnation.com/" target="_blank" rel="noopener">School of Ministry ↗</a></li>
+        <li><a href="https://donate.firebrandnation.com/" target="_blank" rel="noopener">Donate</a></li>
+        <li><a href="https://secure.givelively.org/donate/eternal-lifes-restoration-outreach/mega-crusade" target="_blank" rel="noopener">Mega Crusade Fund</a></li>
+        <li><a href="https://www.firebrandnation.com/get-involved">Sign Up</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-watermark">
+    <p>© 2025 Firebrand Nation. All rights reserved. Registered Ministry, Nairobi, Kenya.</p>
+    <div class="footer-legal">
+      <a href="https://www.firebrandnation.com/legal.php">Privacy Policy</a>
+      <a href="https://www.firebrandnation.com/">Terms of Use</a>
+      <a href="https://www.firebrandnation.com/">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-close" id="lb-close" aria-label="Close lightbox">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-controls">
+    <button class="lb-btn" id="lb-prev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span class="lb-counter" id="lb-counter">1 / 33</span>
+    <button class="lb-btn" id="lb-next" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ──────────────────────────────────────────────
+   GALLERY DATA
+────────────────────────────────────────────── */
+const GALLERY_IMGS = [
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/main1.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/main2.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/main3.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/main4.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/main5.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/main6.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/bek-prayer2.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/bek-praying.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/congratulations.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fellas.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fireband-8u-team.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/firebrand2.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/firebrand3.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn1.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn10.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn2.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn3.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn4.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn5.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn6.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn7.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn8.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fn9.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/fnbek.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/join-session.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/merch-sunday.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/passion.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/prize.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/quality-time.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/rev.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/theapex.webp?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/to.jpg?tr=f-auto,q-auto,w-1200',
+  'https://ik.imagekit.io/vddpcxj7e/firebrand/images/all.jpg?tr=f-auto,q-auto,w-1200'
+];
+
+/* ──────────────────────────────────────────────
+   BUILD GALLERY (duplicate for seamless loop)
+────────────────────────────────────────────── */
+(function buildGallery() {
+  const track = document.getElementById('gallery-track');
+  const allImgs = [...GALLERY_IMGS, ...GALLERY_IMGS]; // duplicate for infinite scroll
+
+  allImgs.forEach((src, i) => {
+    const origIdx = i % GALLERY_IMGS.length;
+    const item = document.createElement('div');
+    item.className = 'gal-item';
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-label', 'View image ' + (origIdx + 1));
+    item.dataset.idx = origIdx;
+
+    item.innerHTML = `
+      <img src="${src}" alt="Firebrand Nation photo ${origIdx + 1}" loading="lazy">
+      <div class="gal-overlay">
+        <div class="gal-zoom-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>`;
+
+    item.addEventListener('click', () => openLightbox(origIdx));
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(origIdx); }});
+    track.appendChild(item);
+  });
+})();
+
+/* ──────────────────────────────────────────────
+   GALLERY PAUSE ON HOVER / TOUCH DRAG
+────────────────────────────────────────────── */
+const track = document.getElementById('gallery-track');
+const strip = document.getElementById('gallery-strip');
+strip.addEventListener('mouseenter', () => track.classList.add('paused'));
+strip.addEventListener('mouseleave', () => track.classList.remove('paused'));
+
+// Touch drag support
+let isDragging = false, startX = 0, scrollLeft = 0, dragOffset = 0;
+track.addEventListener('touchstart', e => {
+  isDragging = true;
+  startX = e.touches[0].clientX;
+  track.classList.add('paused');
+  dragOffset = getComputedTranslateX(track);
+}, { passive: true });
+track.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  const dx = e.touches[0].clientX - startX;
+  track.style.transform = `translateX(${dragOffset + dx}px)`;
+}, { passive: true });
+track.addEventListener('touchend', () => {
+  isDragging = false;
+  // resume after brief pause
+  setTimeout(() => { track.style.transform = ''; track.classList.remove('paused'); }, 800);
+});
+
+function getComputedTranslateX(el) {
+  const st = window.getComputedStyle(el);
+  const m = new DOMMatrix(st.transform);
+  return m.m41;
+}
+
+/* ──────────────────────────────────────────────
+   LIGHTBOX
+────────────────────────────────────────────── */
+const lb       = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lb-img');
+const lbClose  = document.getElementById('lb-close');
+const lbPrev   = document.getElementById('lb-prev');
+const lbNext   = document.getElementById('lb-next');
+const lbCtr    = document.getElementById('lb-counter');
+let lbIdx = 0;
+
+function openLightbox(idx) {
+  lbIdx = idx;
+  lbImg.src = GALLERY_IMGS[idx];
+  lbImg.alt = 'Firebrand Nation photo ' + (idx + 1);
+  lbCtr.textContent = (idx + 1) + ' / ' + GALLERY_IMGS.length;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  lbClose.focus();
+  track.classList.add('paused');
+}
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  track.classList.remove('paused');
+  lbImg.src = '';
+}
+function lbGo(dir) {
+  lbIdx = (lbIdx + dir + GALLERY_IMGS.length) % GALLERY_IMGS.length;
+  // animate swap
+  lbImg.style.opacity = '0';
+  lbImg.style.transform = 'scale(.96)';
+  setTimeout(() => {
+    lbImg.src = GALLERY_IMGS[lbIdx];
+    lbImg.alt = 'Firebrand Nation photo ' + (lbIdx + 1);
+    lbCtr.textContent = (lbIdx + 1) + ' / ' + GALLERY_IMGS.length;
+    lbImg.style.transition = 'opacity .2s, transform .2s';
+    lbImg.style.opacity = '1';
+    lbImg.style.transform = 'scale(1)';
+  }, 140);
+}
+
+lbClose.addEventListener('click', closeLightbox);
+lbPrev.addEventListener('click', () => lbGo(-1));
+lbNext.addEventListener('click', () => lbGo(1));
+lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+// keyboard
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape')      closeLightbox();
+  if (e.key === 'ArrowLeft')   lbGo(-1);
+  if (e.key === 'ArrowRight')  lbGo(1);
+});
+
+// Swipe in lightbox
+let lbSwipeX = 0;
+lb.addEventListener('touchstart', e => { lbSwipeX = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - lbSwipeX;
+  if (Math.abs(dx) > 50) lbGo(dx < 0 ? 1 : -1);
+});
+
+/* ──────────────────────────────────────────────
+   STICKY HEADER SHADOW
+────────────────────────────────────────────── */
+const hdr = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  hdr.style.boxShadow = window.scrollY > 8 ? '0 2px 16px rgba(0,0,0,.07)' : '';
+}, { passive: true });
+
+/* ──────────────────────────────────────────────
+   MOBILE NAV
+────────────────────────────────────────────── */
+const ham  = document.getElementById('hamburger');
+const mnav = document.getElementById('mobile-nav');
+ham.addEventListener('click', () => {
+  const o = mnav.classList.toggle('open');
+  ham.classList.toggle('open', o);
+  ham.setAttribute('aria-expanded', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+mnav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mnav.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded', false);
+    document.body.style.overflow = '';
+  });
+});
+
+/* ──────────────────────────────────────────────
+   SIGNUP FORM
+────────────────────────────────────────────── */
+function doSignup(e) {
+  e.preventDefault();
+  const inp = document.getElementById('em');
+  const btn = e.target.querySelector('button');
+  if (!inp.value || !inp.value.includes('@')) { inp.style.borderColor = '#C8102E'; return; }
+  btn.textContent = "You're in!";
+  btn.disabled = true; inp.disabled = true;
+}
+</script>
+</body>
+</html>
